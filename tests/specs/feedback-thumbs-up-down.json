@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Feedback buttons",
+    "steps": [
+      {
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Trigger thumbs up/down feedback flow with optional comment"
+            }
+          }
+        ],
+        "send": {
+          "callback": "feedback:thumbs_up/down"
+        }
+      }
+    ]
+  }
+]
