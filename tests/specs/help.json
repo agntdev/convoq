@@ -8,7 +8,7 @@
           {
             "method": "sendMessage",
             "payload": {
-              "text": "ℹ️ Tap /start to open the menu, then pick what you want from the buttons.\n\nEverything in this bot is reachable by tapping — you don't need to remember any commands."
+              "text": "ℹ️ Ask me anything — I'm a Q&A assistant.\n\nJust type your question and I'll give you a concise answer.\n\nTry prompts like:\n• What is photosynthesis?\n• How does machine learning work?\n• Why is the sky blue?\n\nUse the buttons on the main menu to view history or send feedback."
             }
           }
         ]

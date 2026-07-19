@@ -1,19 +1,17 @@
 [
   {
-    "name": "/reset",
+    "name": "/reset clears conversation context",
     "steps": [
       {
+        "send": { "text": "/reset" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Clear conversation context for this chat"
+              "text": "Conversation context cleared."
             }
           }
-        ],
-        "send": {
-          "text": "/reset"
-        }
+        ]
       }
     ]
   }
