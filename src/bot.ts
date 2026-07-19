@@ -6,7 +6,9 @@ import { createBot, type BotContext } from "./toolkit/index.js";
 // bot grows. Durable domain data must NOT live here — use the toolkit's
 // persistent storage (see AGENTS.md).
 export interface Session {
-  // example: step?: "awaiting_amount";
+  messageHistory: Array<{ role: "user" | "assistant"; content: string; timestamp: number }>;
+  feedbackState?: { step: "idle" | "awaiting_comment"; rating: "up" | "down"; chatId: number };
+  rateLimitTimestamps: number[];
 }
 
 export type Ctx = BotContext<Session>;
@@ -19,7 +21,7 @@ export type Ctx = BotContext<Session>;
  */
 export async function buildBot(token: string) {
   const bot = createBot<Session>(token, {
-    initial: () => ({}),
+    initial: () => ({ messageHistory: [], rateLimitTimestamps: [] }),
   });
 
   const dir = new URL("./handlers/", import.meta.url);

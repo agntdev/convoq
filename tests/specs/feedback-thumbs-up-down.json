@@ -1,19 +1,76 @@
 [
   {
-    "name": "Feedback buttons",
+    "name": "Feedback flow prompt from menu",
     "steps": [
       {
+        "send": { "callback": "feedback:rate:prompt" },
         "expect": [
           {
-            "method": "sendMessage",
+            "method": "editMessageText",
             "payload": {
-              "text": "Trigger thumbs up/down feedback flow with optional comment"
+              "text": "How was your experience with this bot?"
             }
           }
-        ],
-        "send": {
-          "callback": "feedback:thumbs_up/down"
-        }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Feedback thumbs up",
+    "steps": [
+      {
+        "send": { "callback": "feedback:rate:up" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "Glad you liked it! Want to add a comment?"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Feedback thumbs down",
+    "steps": [
+      {
+        "send": { "callback": "feedback:rate:down" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "Sorry to hear that. What could we improve?"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Feedback no comment after thumbs down",
+    "steps": [
+      {
+        "send": { "callback": "feedback:rate:down" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "Sorry to hear that. What could we improve?"
+            }
+          }
+        ]
+      },
+      {
+        "send": { "callback": "feedback:comment:no" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "Thanks for your feedback!"
+            }
+          }
+        ]
       }
     ]
   }

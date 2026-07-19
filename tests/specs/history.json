@@ -1,19 +1,17 @@
 [
   {
-    "name": "/history",
+    "name": "/history shows empty state",
     "steps": [
       {
+        "send": { "text": "/history" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Show last 5 Q\u0026A pairs"
+              "text": "No conversation history yet. Ask me something to get started!"
             }
           }
-        ],
-        "send": {
-          "text": "/history"
-        }
+        ]
       }
     ]
   }
